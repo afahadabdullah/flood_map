@@ -68,6 +68,57 @@ DOI 10.24381/cds.a4fdd6b9.
 | `*_manifest.json` | window, region, shape, channels, source, citation |
 
 ---
+ 
+## MODIS Flood Data (MCDWD) Downloader
+ 
+`download_mcdwd_tiles.sh` downloads **MCDWD_L3** HDF tiles from the NASA LAADS DAAC for a
+given year, set of MODIS tiles, and output directory. This is a separate, standalone utility
+for pulling MODIS-derived flood data (independent of the GloFAS pipeline above).
+ 
+**Setup:**
+```bash
+chmod +x download_mcdwd_tiles.sh
+```
+ 
+You'll need a LAADS bearer token (get one from your NASA Earthdata / LAADS DAAC account
+profile). Provide it either via the `-t` flag or by setting the `LAADS_TOKEN` environment
+variable.
+ 
+**Usage:**
+```bash
+./download_mcdwd_tiles.sh -t TOKEN -y YEAR -d OUTPUT_DIR [-T "tile1 tile2 ..."] [-s START_DAY] [-e END_DAY]
+```
+ 
+| Option | Description |
+|---|---|
+| `-t TOKEN` | LAADS bearer token (or set `LAADS_TOKEN` env var instead) |
+| `-y YEAR` | Year to download (e.g., `2004`) |
+| `-d OUTPUT_DIR` | Directory to save downloaded `.hdf` files into (a `YEAR` subfolder is created inside) |
+| `-T "TILES"` | Space-separated list of tiles in quotes (default: `"h26v06 h27v06"`) |
+| `-s START_DAY` | First day-of-year to download (default: `1`) |
+| `-e END_DAY` | Last day-of-year to download (default: last day of year) |
+| `-h` | Show help message |
+ 
+**Examples:**
+```bash
+./download_mcdwd_tiles.sh -t "$LAADS_TOKEN" -y 2004 \
+    -d /home/cluster/Projects/Flood_Forecasting/Inundation_maps/images
+ 
+./download_mcdwd_tiles.sh -y 2004 -d ./images -T "h26v06 h27v06 h25v06"
+    # uses LAADS_TOKEN from environment since -t was not given
+```
+ 
+Token resolution order: `-t` flag > `LAADS_TOKEN` environment variable. The script is
+cache-aware — it checks for existing files before downloading, so it's safe to re-run.
+Full option details are in `download_mcdwd_tiles_documentation.txt`.
+ 
+---
+ 
+## Notes
+- **Cache-first:** downloads are reused, never re-requested — safe to re-run.
+- Data folders (`data_raw/`, `data_ready/`) and credentials are **git-ignored** — regenerate by
+  running `01_download_process.ipynb`.
+- Train/test split and the model live in a later notebook (not yet included).
 
 ## Notes
 - **Cache-first:** downloads are reused, never re-requested — safe to re-run.
