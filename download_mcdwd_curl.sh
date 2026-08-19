@@ -21,7 +21,7 @@
 #
 # EXAMPLE — 2022 May 1 (DOY 121) through Aug 31 (DOY 243):
 #   export LAADS_TOKEN='paste_token_here'
-#   ./download_mcdwd_curl.sh -y 2022 -d update/modis_hdf -T "h25v06 h26v06" -s 121 -e 243
+#   ./download_mcdwd_curl.sh -y 2022 -d ../data/raw/modis_hdf -T "h25v06 h26v06" -s 121 -e 243
 #
 # NOTES:
 #   The directory listing is public, so -n needs no token; only the file
