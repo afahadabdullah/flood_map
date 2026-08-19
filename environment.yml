@@ -1,0 +1,34 @@
+# Environment for the flood_map pipeline.
+#
+#     conda env create -f config/environment.yml
+#     conda activate sia
+#
+# Two things here are deliberate, and both cost time to rediscover:
+#
+#   * pyhdf needs the conda-forge hdf4 library. A base anaconda install does not
+#     have it, and notebook 05 cannot open the MODIS HDFs without it.
+#   * netCDF4 in this environment is built against numpy 1.x and fails to import
+#     under numpy 2, so every read and write goes through engine="h5netcdf".
+#     Do not "fix" this by reinstalling netcdf4 — fix it by leaving it out.
+
+name: sia
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - numpy=2.2
+  - xarray=2024.10
+  - h5netcdf=1.6
+  - h5py=3.13
+  - hdf4=4.2
+  - pandas=2.2
+  - matplotlib=3.10
+  - scipy=1.15
+  - pyproj=3.7
+  - rasterio=1.4
+  - requests=2.32
+  - jupyterlab
+  - pip
+  - pip:
+      - pyhdf==0.11.7
+      - cdsapi
