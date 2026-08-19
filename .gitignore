@@ -1,0 +1,12 @@
+# Raw downloads. 2.6 GB of MODIS HDF tiles, re-fetchable with
+# code/download_mcdwd_curl.sh; GloFAS zips come back from EWDS via notebook 01.
+data/raw/
+
+# macOS / Jupyter noise
+.DS_Store
+.ipynb_checkpoints/
+__pycache__/
+*.pyc
+
+# The stray 2004 test tile in archive/ — kept on disk, not worth versioning.
+archive/*.hdf

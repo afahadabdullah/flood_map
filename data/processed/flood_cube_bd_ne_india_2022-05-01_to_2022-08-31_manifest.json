@@ -1,0 +1,43 @@
+{
+  "tag": "bd_ne_india_2022-05-01_to_2022-08-31",
+  "shape_time_lat_lon": [
+    123,
+    130,
+    140
+  ],
+  "resolution_deg": 0.05,
+  "area_NWSE": [
+    27.5,
+    87.0,
+    21.0,
+    94.0
+  ],
+  "time_start": "2022-05-01",
+  "time_end": "2022-08-31",
+  "inputs": [
+    "discharge",
+    "runoff",
+    "soil_wetness"
+  ],
+  "labels": [
+    "flood_fraction",
+    "flood_binary",
+    "valid_fraction"
+  ],
+  "norm_stats": {
+    "discharge": {
+      "mean": 484.2728271484375,
+      "std": 4132.560546875
+    },
+    "runoff": {
+      "mean": 5.311383247375488,
+      "std": 6.972404956817627
+    },
+    "soil_wetness": {
+      "mean": 0.8025937080383301,
+      "std": 0.12887559831142426
+    }
+  },
+  "usable_label_fraction": 0.4196703296703297,
+  "file": "flood_cube_bd_ne_india_2022-05-01_to_2022-08-31.nc"
+}

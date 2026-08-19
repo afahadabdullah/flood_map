@@ -1,0 +1,27 @@
+{
+  "tag": "bd_ne_india_2022-05-01_to_2022-08-31",
+  "product": "MCDWD_L3 v061",
+  "layer": "Flood_1Day_250m",
+  "gapfill_layer": "Flood_3Day_250m",
+  "tiles": [
+    "h25v06",
+    "h26v06"
+  ],
+  "flood_classes": [
+    2,
+    3
+  ],
+  "frac_threshold": 0.5,
+  "min_valid_fraction": 0.2,
+  "shape_time_lat_lon": [
+    123,
+    130,
+    140
+  ],
+  "resolution_deg": 0.05000000000000071,
+  "grid_source": "glofas_bd_ne_india_2022-05-01_to_2022-08-31_norm.nc",
+  "usable_day_cell_fraction": 0.4196703296703297,
+  "files": {
+    "labels": "flood_labels_bd_ne_india_2022-05-01_to_2022-08-31.nc"
+  }
+}
